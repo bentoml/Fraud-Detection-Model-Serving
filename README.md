@@ -133,16 +133,8 @@ print(results)
 
 0. Deployment Options
 
-This section covers a number of topics in brining this fraud detection service. Before diving into
-it more, let's review a few most common ways of deploying ML services in production:
-
-
-| Deploy Method | Pros 👍 | Cons 👎 |
-| --- | --- | --- |
-| [🍱 BentoCloud](https://www.bentoml.com/) | Serverless cloud for AI, fully managed, made for BentoML | Not generally available yet, [sign up here](https://www.bentoml.com/bento-cloud/) for waitlist |
-| Docker Containers | Flexible for deploying almost anywhere, easy to get started | Requires DevOps work for prod deployment, lacks advanced scaling capabilities |
-| [Yatai](https://github.com/bentoml/Yatai) on Kubernetes | Cloud-native AI deployment on Kubernetes, comes with advanced auto-scaling and CI/CD workflows | Requires professional DevOps team to maintain and operate |
-| Cloud Deployment with [BentoControl](https://github.com/bentoml/bentoctl) | Great for proof-of-concept deployments directly running on public cloud services (EC2, ECS, SageMaker, Lambda, GCP, etc) | Requires basic understanding of Terraform and  |
+BentoML offers a number of options for deploying and hosting online ML servicesinto
+for production, learn more at [Deploying Bento Docs](https://docs.bentoml.org/en/latest/concepts/deploy.html).
 
 In this README, we will go over a basic deployment strategy with Docker containers.
 
@@ -218,4 +210,4 @@ understanding its throughput and latency on your deployment target.
 
 ## Join our community
 
-BentoML has a thriving open source community where thousands of ML/AI practitioners are contributing to the project, helping other users and discussing the future of AI. [👉 Join us on slack today!](https://l.linklyhq.com/l/ktO8)
+BentoML has a thriving open source community where thousands of ML/AI practitioners are contributing to the project, helping other users and discussing the future of AI. [👉 Join us on slack today!](https://l.bentoml.com/join-slack)
