@@ -1,24 +1,30 @@
-# Fraud Detection Models Serving with BentoML
+<div align="center">
+    <h1 align="center">Fraud Detection Models Serving</h1>
+    <i>Powered by BentoML 🍱</i>
+    <br>
+</div>
+<br>
 
+## 📖 Introduction 📖
 This project demonstrates how to serve a fraud detection model trained with [XGBoost]() on the 
 dataset from the [IEEE-CIS Fraud Detection competition](https://www.kaggle.com/competitions/ieee-fraud-detection/data).
 
 
-## Getting Started
+## 🏃‍♂️ Getting Started 🏃‍♂️
 
-0. Clone the Repository:
+### 0. Clone the Repository:
 
 ```bash
 git clone git@github.com:bentoml/Fraud-Detection-Model-Serving.git
 cd Fraud-Detection-Model-Serving
 ```
 
-1. Install Dependencies:
+### 1. Install Dependencies:
 ```bash
 pip install -r ./dev-requirements.txt
 ```
 
-2. Download dataset
+### 2. Download dataset
 
 Before downloading, set up your Kaggle API Credentials following instructions 
 [here](https://github.com/Kaggle/kaggle-api#api-credentials) and accept the [dataset 
@@ -28,7 +34,7 @@ rules on Kaggle](https://www.kaggle.com/competitions/ieee-fraud-detection/data)
 ./download_data.sh
 ```
 
-3. Model Training
+### 3. Model Training
 
 Execute the `./IEEE-CIS-Fraud-Detection.ipynb` notebook with the `train.sh` script:
 ```bash
@@ -66,7 +72,7 @@ print(np.argmax(result, axis=1))
 ```
 
 
-4. Serving the model
+### 4. Serving the model
 
 The `service.py` file contains the source code for defining an ML service:
 
@@ -103,20 +109,18 @@ Run `bentoml serve` command to launch the server locally:
 bentoml serve
 ```
 
-5. Sending Inference Requests
-
+## 🌐 Interacting with the Service 🌐
+The default mode of BentoML's model serving is via HTTP server. Here, we showcase a few examples of how one can interact with the service:
+### Swagger UI
 Visit `http://localhost:3000/` in a browser and send test requests via the UI.
 
-
-You may also send inference request via REST API endpoints.
-
-To do this via CLI command `curl`:
+### cURL
+Via the command `curl`, you can:
 ```bash
 head --lines=200 ./data/test_transaction.csv | curl -X POST -H 'Content-Type: text/csv' --data-binary @- http://0.0.0.0:3000/is_fraud
 ```
 
-Or with BentoML's Python Client:
-
+### Via BentoClient 🐍
 ```python
 import pandas as pd
 from bentoml.client import Client
@@ -129,17 +133,16 @@ print(results)
 ```
 
 
-## Bringing it to Production
-
-0. Deployment Options
-
+## 🚀 Bringing it to Production 🚀
 BentoML offers a number of options for deploying and hosting online ML servicesinto
 for production, learn more at [Deploying Bento Docs](https://docs.bentoml.org/en/latest/concepts/deploy.html).
+
+---
 
 In this README, we will go over a basic deployment strategy with Docker containers.
 
 
-1. Build a docker image
+### 1. Build a docker image
 
 Build a Bento to lock the model version and dependency tree:
 ```bash
@@ -157,7 +160,7 @@ Test out the docker image built:
 docker run -it --rm -p 3000:3000 fraud_detection:{YOUR BENTO VERSION}
 ```
 
-2. Inference on GPU
+### 2. Inference on GPU
 
 Use `bentofile-gpu.yaml` to build a new Bento, which adds the following two lines to the YAML.
 This ensures the docker image comes with GPU libraries installed and BentoML will automatically
@@ -183,7 +186,7 @@ docker run --gpus all --device /dev/nvidia0 \
            fraud_detection:{YOUR BENTO VERSION}
 ```
 
-3. Multi-model Inference Pipeline/Graph
+### 3. Multi-model Inference Pipeline/Graph
 
 BentoML makes it efficient to create ML service with multiple ML models, which is often used for combining
 multiple fraud detection models and getting an aggregated result. With BentoML, users can choose to run
@@ -202,12 +205,12 @@ bentoml serve
 Learn more about BentoML Runner usage [here](https://docs.bentoml.org/en/latest/concepts/runner.html)
 
 
-4. Benchmark Testing
+### 4. Benchmark Testing
 
 Visit the `/benchmark/README.md` for how to run benchmark tests on your fraud detection service and 
 understanding its throughput and latency on your deployment target.
 
 
-## Join our community
+## 👥Join our Community 👥
 
 BentoML has a thriving open source community where thousands of ML/AI practitioners are contributing to the project, helping other users and discussing the future of AI. [👉 Join us on slack today!](https://l.bentoml.com/join-slack)
