@@ -1,5 +1,7 @@
 <div align="center">
     <h1 align="center">Fraud Detection Models Serving</h1>
+    <br>
+    <strong>Online model serving with Fraud Detection model trained with XGBoost on IEEE-CIS dataset<br></strong>
     <i>Powered by BentoML 🍱</i>
     <br>
 </div>
